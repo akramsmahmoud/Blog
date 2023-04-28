@@ -1,47 +1,31 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "$schema": "https://json.schemastore.org/eslintrc",
+  "root": true,
   "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-    // Uncomment the following lines to enable eslint-config-prettier
-    // Is not enabled right now to avoid issues with the Next.js repo
-    // "prettier",
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:tailwindcss/recommended"
   ],
-  "env": {
-    "es6": true,
-    "browser": true,
-    "jest": true,
-    "node": true
+  "plugins": ["tailwindcss"],
+  "rules": {
+    "@next/next/no-html-link-for-pages": "off",
+    "react/jsx-key": "off",
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "error"
   },
   "settings": {
-    "react": {
-      "version": "detect"
+    "tailwindcss": {
+      "callees": ["cn"],
+      "config": "tailwind.config.js"
+    },
+    "next": {
+      "rootDir": true
     }
   },
-  "rules": {
-    "react/react-in-jsx-scope": 0,
-    "react/display-name": 0,
-    "react/prop-types": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/explicit-member-accessibility": 0,
-    "@typescript-eslint/indent": 0,
-    "@typescript-eslint/member-delimiter-style": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/no-var-requires": 0,
-    "@typescript-eslint/no-use-before-define": 0,
-    "@typescript-eslint/no-unused-vars": [
-      2,
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
-    "no-console": [
-      2,
-      {
-        "allow": ["warn", "error"]
-      }
-    ]
-  }
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser"
+    }
+  ]
 }
